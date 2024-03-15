@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="13" passed="13" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-03-15T11:28:48 IST" name="Default suite" finished-at="2024-03-15T11:28:59 IST" duration-ms="10708">
+    <groups>
+    </groups>
+    <test started-at="2024-03-15T11:28:48 IST" name="Default test" finished-at="2024-03-15T11:28:59 IST" duration-ms="10708">
+      <class name="facebook.loginPage">
+        <test-method is-config="true" signature="setUP()[pri:0, instance:facebook.loginPage@3c9754d8]" started-at="2024-03-15T11:28:45 IST" name="setUP" finished-at="2024-03-15T11:28:48 IST" duration-ms="2915" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUP -->
+        <test-method signature="TC_001_LoginPageLoaded()[pri:0, instance:facebook.loginPage@3c9754d8]" started-at="2024-03-15T11:28:48 IST" name="TC_001_LoginPageLoaded" finished-at="2024-03-15T11:28:49 IST" duration-ms="1203" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_001_LoginPageLoaded -->
+        <test-method signature="TC_002_EmailInputBoxIsEnable()[pri:0, instance:facebook.loginPage@3c9754d8]" started-at="2024-03-15T11:28:49 IST" name="TC_002_EmailInputBoxIsEnable" finished-at="2024-03-15T11:28:49 IST" duration-ms="29" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_002_EmailInputBoxIsEnable -->
+        <test-method signature="TC_003_PlaceholderIsPresented()[pri:0, instance:facebook.loginPage@3c9754d8]" started-at="2024-03-15T11:28:49 IST" name="TC_003_PlaceholderIsPresented" finished-at="2024-03-15T11:28:49 IST" duration-ms="39" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_003_PlaceholderIsPresented -->
+        <test-method signature="TC_004_EmailInputIsEmailEnterable()[pri:0, instance:facebook.loginPage@3c9754d8]" started-at="2024-03-15T11:28:49 IST" name="TC_004_EmailInputIsEmailEnterable" finished-at="2024-03-15T11:28:50 IST" duration-ms="98" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_004_EmailInputIsEmailEnterable -->
+        <test-method signature="TC_005_EmailInputIsPhoneNumberEnterable()[pri:0, instance:facebook.loginPage@3c9754d8]" started-at="2024-03-15T11:28:50 IST" name="TC_005_EmailInputIsPhoneNumberEnterable" finished-at="2024-03-15T11:28:50 IST" duration-ms="167" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_005_EmailInputIsPhoneNumberEnterable -->
+        <test-method signature="TC_006_PasswaordInputBoxIsEnable()[pri:0, instance:facebook.loginPage@3c9754d8]" started-at="2024-03-15T11:28:50 IST" name="TC_006_PasswaordInputBoxIsEnable" finished-at="2024-03-15T11:28:50 IST" duration-ms="30" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_006_PasswaordInputBoxIsEnable -->
+        <test-method signature="TC_007_PlaceholderIsPresentedInPassword()[pri:0, instance:facebook.loginPage@3c9754d8]" started-at="2024-03-15T11:28:50 IST" name="TC_007_PlaceholderIsPresentedInPassword" finished-at="2024-03-15T11:28:50 IST" duration-ms="20" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_007_PlaceholderIsPresentedInPassword -->
+        <test-method signature="TC_008_PasswordInputIsEnterable()[pri:0, instance:facebook.loginPage@3c9754d8]" started-at="2024-03-15T11:28:50 IST" name="TC_008_PasswordInputIsEnterable" finished-at="2024-03-15T11:28:50 IST" duration-ms="119" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_008_PasswordInputIsEnterable -->
+        <test-method signature="TC_009_EyeIconIsDisplayed()[pri:0, instance:facebook.loginPage@3c9754d8]" started-at="2024-03-15T11:28:50 IST" name="TC_009_EyeIconIsDisplayed" finished-at="2024-03-15T11:28:50 IST" duration-ms="34" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_009_EyeIconIsDisplayed -->
+        <test-method signature="TC_010_EyeIconIsNotDisplayed()[pri:0, instance:facebook.loginPage@3c9754d8]" started-at="2024-03-15T11:28:50 IST" name="TC_010_EyeIconIsNotDisplayed" finished-at="2024-03-15T11:28:51 IST" duration-ms="1109" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_010_EyeIconIsNotDisplayed -->
+        <test-method signature="TC_011_PasswordDisplayedByClickEyeIcon()[pri:0, instance:facebook.loginPage@3c9754d8]" started-at="2024-03-15T11:28:51 IST" name="TC_011_PasswordDisplayedByClickEyeIcon" finished-at="2024-03-15T11:28:51 IST" duration-ms="179" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_011_PasswordDisplayedByClickEyeIcon -->
+        <test-method signature="TC_012_PasswordNotDisplayedByClickEyeIcon()[pri:0, instance:facebook.loginPage@3c9754d8]" started-at="2024-03-15T11:28:51 IST" name="TC_012_PasswordNotDisplayedByClickEyeIcon" finished-at="2024-03-15T11:28:51 IST" duration-ms="60" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_012_PasswordNotDisplayedByClickEyeIcon -->
+        <test-method signature="TC_013_ForgetPasswordIsRedirectable()[pri:0, instance:facebook.loginPage@3c9754d8]" started-at="2024-03-15T11:28:51 IST" name="TC_013_ForgetPasswordIsRedirectable" finished-at="2024-03-15T11:28:59 IST" duration-ms="7530" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_013_ForgetPasswordIsRedirectable -->
+        <test-method is-config="true" signature="closure()[pri:0, instance:facebook.loginPage@3c9754d8]" started-at="2024-03-15T11:28:59 IST" name="closure" finished-at="2024-03-15T11:28:59 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closure -->
+      </class> <!-- facebook.loginPage -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

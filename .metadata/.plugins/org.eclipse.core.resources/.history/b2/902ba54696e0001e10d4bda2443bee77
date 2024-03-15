@@ -1,0 +1,30 @@
+package facebook;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
+
+public class loginPage {
+
+	WebDriver driver;
+
+	@BeforeSuite
+	public void setUP() {
+		driver = Helper.getDriver();
+
+	}
+
+	@Test
+	public void Test1() {
+		driver.get("https://www.facebook.com/");
+		WebElement Confirm = driver.findElement(By.xpath("//div[@class='_8esl']/div"));
+		System.out.println(Confirm.getText());
+		
+	}
+
+}

@@ -1,0 +1,21 @@
+package facebook;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.BeforeTest;
+
+public class loginPage {
+
+	WebDriver driver;
+	
+	@BeforeTest
+	public void setUP() {
+		driver = Helper.getDriver();
+		
+	}
+	
+	
+	
+	
+	
+	
+}

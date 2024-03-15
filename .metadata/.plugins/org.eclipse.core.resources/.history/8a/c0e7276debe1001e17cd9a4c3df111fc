@@ -1,0 +1,62 @@
+package facebook;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+
+public class loginPage {
+
+	WebDriver driver;
+	WebElement emailInput;
+
+	@BeforeSuite
+	public void setUP() {
+		driver = Helper.getDriver();
+
+	}
+
+	@Test
+	public void TestToVerifyLoginPageLoaded() {
+		driver.get("https://www.facebook.com/");
+		String Page = driver.getTitle();
+		boolean isLoginpage = Page.contains("log in or sign up");
+		Assert.assertEquals(isLoginpage, true);
+		String welcomeText = driver.findElement(By.xpath("//div[@class='_8esl']/h2")).getText();
+		Assert.assertEquals(welcomeText, "Facebook helps you connect and share with the people in your life.");
+
+	}
+
+	@Test
+	public void TestToVerifyEmailInputBoxIsEnable() {
+	    emailInput = driver.findElement(By.id("email"));
+		boolean emailInputIsEnabled = emailInput.isEnabled();
+		Assert.assertEquals(emailInputIsEnabled, true);
+
+	}
+	
+	@Test
+	public void TestToVerifyPlaceholderIsPresented() {
+		String placeHolderText = emailInput.getAttribute("placeholder");
+		boolean IsPlaceholderPresented = placeHolderText.contains("Email address or phone number");
+		Assert.assertEquals(IsPlaceholderPresented, true);
+	}
+	
+	@Test
+	public void TestToVerifyEmailInputIsEmailEnterable() {
+		emailInput.sendKeys("XYZ@gmail.com");
+		String textvalue = emailInput.getAttribute("value");
+		System.out.println("1.  "+textvalue);
+		System.out.println("2.  "+emailInput.getText()); 
+		
+	}
+	
+	
+	
+	
+	
+	
+
+}
