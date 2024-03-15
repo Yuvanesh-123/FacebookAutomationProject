@@ -11,6 +11,10 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.ExtentTest;
+
+import facebook.Helper.Pages;
+
 public class loginPage {
 
 	WebDriver driver;
@@ -18,6 +22,12 @@ public class loginPage {
 	WebElement passwordInput;
 	WebElement eyeIconContainer;
 	WebElement eyeIcon;
+	
+	
+	public ExtentTest getTestCases(String TestCaseName) {
+		return Helper.createTest(Pages.Login, TestCaseName);
+		
+	}
 
 	@BeforeSuite
 	public void setUP() {
@@ -27,22 +37,39 @@ public class loginPage {
 
 	@Test
 	public void TC_001_LoginPageLoaded() {
-		driver.get("https://www.facebook.com/");
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		String Page = driver.getTitle();
-		boolean isLoginpage = Page.contains("log in or sign up");
-		Assert.assertEquals(isLoginpage, true);
-		String welcomeText = driver.findElement(By.xpath("//div[@class='_8esl']/h2")).getText();
-		Assert.assertEquals(welcomeText, "Facebook helps you connect and share with the people in your life.");
+		ExtentTest test= this.getTestCases("TC_001_LoginPageLoaded");
+		try {
+			driver.get("https://www.facebook.com/");
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+			String Page = driver.getTitle();
+			boolean isLoginpage = Page.contains("log in or sign up");
+			Assert.assertEquals(isLoginpage, true);
+			String welcomeText = driver.findElement(By.xpath("//div[@class='_8esl']/h2")).getText();
+			Assert.assertEquals(welcomeText, "Facebook helps you connect and share with the people in your life.");
+			test.pass("Sucessfully Facebook login page loaded ");
+		} catch (Exception e) {
+			Helper.triggerExpectionError(test, e);
+		}catch (AssertionError e) {
+			Helper.triggerAssertionError(test, e);
+		}
+		
 
 	}
 
 	@Test
 	public void TC_002_EmailInputBoxIsEnable() {
-		emailInput = driver.findElement(By.id("email"));
-		boolean emailInputIsEnabled = emailInput.isEnabled();
-		Assert.assertEquals(emailInputIsEnabled, true);
+		ExtentTest test= this.getTestCases("TC_002_EmailInputBoxIsEnable");
+		try {
+			emailInput = driver.findElement(By.id("email"));
+			boolean emailInputIsEnabled = emailInput.isEnabled();
+			Assert.assertEquals(emailInputIsEnabled, true);
+			test.pass("Email Input box is enable to enter Email or Password");
+		} catch (Exception e) {
+			Helper.triggerExpectionError(test, e);
+		}catch (AssertionError e) {
+			Helper.triggerAssertionError(test, e);
+		}
 
 	}
 
@@ -134,6 +161,7 @@ public class loginPage {
 		Assert.assertEquals(findText.contains("Find Your Account"), true);
 
 	}
+	
 
 	@AfterSuite
 	public void closure() {
