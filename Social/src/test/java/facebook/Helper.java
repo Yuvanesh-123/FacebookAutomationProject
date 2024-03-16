@@ -52,19 +52,16 @@ public class Helper {
 		SimpleDateFormat formattedTime = new SimpleDateFormat("dd-MM-yyyy_HH-mm-ss");
 		currentTimeStamp = formattedTime.format(date);
 		report = new ExtentReports();
-		Status x[] = new Status[1];
-		x[0] = Status.SKIP;
-
 		ExtentSparkReporter allCasesRepot = new ExtentSparkReporter(
-				"D:\\Eclipse\\DemoProjectScripts\\Reports" + currentTimeStamp + "AllCasesReport.html");
+				"D:\\Eclipse\\DemoProjectScripts\\Reports\\" + currentTimeStamp + "\\AllCasesReport.html");
 		ExtentSparkReporter passCasesRepot = new ExtentSparkReporter(
-				"D:\\Eclipse\\DemoProjectScripts\\Reports" + currentTimeStamp + "PassCasesReport.html").filter()
+				"D:\\Eclipse\\DemoProjectScripts\\Reports\\" + currentTimeStamp + "\\PassCasesReport.html").filter()
 				.statusFilter().as(new Status[] { Status.PASS }).apply();
 		ExtentSparkReporter failCasesRepot = new ExtentSparkReporter(
-				"D:\\Eclipse\\DemoProjectScripts\\Reports" + currentTimeStamp + "FailCasesReport.html").filter()
+				"D:\\Eclipse\\DemoProjectScripts\\Reports\\" + currentTimeStamp + "\\FailCasesReport.html").filter()
 				.statusFilter().as(new Status[] { Status.FAIL }).apply();
 		ExtentSparkReporter skipCasesRepot = new ExtentSparkReporter(
-				"D:\\Eclipse\\DemoProjectScripts\\Reports" + currentTimeStamp + "SkipCasesReport.html").filter()
+				"D:\\Eclipse\\DemoProjectScripts\\Reports\\" + currentTimeStamp + "\\SkipCasesReport.html").filter()
 				.statusFilter().as(new Status[] { Status.SKIP }).apply();
 		report.attachReporter(allCasesRepot, passCasesRepot, failCasesRepot, skipCasesRepot);
 

@@ -1,5 +1,7 @@
 package facebook;
 
+import static org.testng.Assert.assertEquals;
+
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -11,37 +13,41 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.model.Report;
 
 import facebook.Helper.Pages;
 
 public class loginPage {
 
 	WebDriver driver;
+	ExtentReports report;
 	WebElement emailInput;
 	WebElement passwordInput;
 	WebElement eyeIconContainer;
 	WebElement eyeIcon;
-	
-	
+	WebElement createAccountButton;
+
 	public ExtentTest getTestCases(String TestCaseName) {
 		return Helper.createTest(Pages.Login, TestCaseName);
-		
+
 	}
 
 	@BeforeSuite
 	public void setUP() {
 		driver = Helper.getDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		report = Helper.getReport();
 
 	}
 
 	@Test
 	public void TC_001_LoginPageLoaded() {
-		ExtentTest test= this.getTestCases("TC_001_LoginPageLoaded");
+		ExtentTest test = this.getTestCases("TC_001_LoginPageLoaded");
 		try {
 			driver.get("https://www.facebook.com/");
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 			String Page = driver.getTitle();
 			boolean isLoginpage = Page.contains("log in or sign up");
 			Assert.assertEquals(isLoginpage, true);
@@ -50,16 +56,15 @@ public class loginPage {
 			test.pass("Sucessfully Facebook login page loaded ");
 		} catch (Exception e) {
 			Helper.triggerExpectionError(test, e);
-		}catch (AssertionError e) {
+		} catch (AssertionError e) {
 			Helper.triggerAssertionError(test, e);
 		}
-		
 
 	}
 
 	@Test
 	public void TC_002_EmailInputBoxIsEnable() {
-		ExtentTest test= this.getTestCases("TC_002_EmailInputBoxIsEnable");
+		ExtentTest test = this.getTestCases("TC_002_EmailInputBoxIsEnable");
 		try {
 			emailInput = driver.findElement(By.id("email"));
 			boolean emailInputIsEnabled = emailInput.isEnabled();
@@ -67,7 +72,7 @@ public class loginPage {
 			test.pass("Email Input box is enable to enter Email or Password");
 		} catch (Exception e) {
 			Helper.triggerExpectionError(test, e);
-		}catch (AssertionError e) {
+		} catch (AssertionError e) {
 			Helper.triggerAssertionError(test, e);
 		}
 
@@ -75,97 +80,247 @@ public class loginPage {
 
 	@Test
 	public void TC_003_PlaceholderIsPresented() {
-		String placeHolderText = emailInput.getAttribute("placeholder");
-		boolean IsPlaceholderPresented = placeHolderText.contains("Email address or phone number");
-		Assert.assertEquals(IsPlaceholderPresented, true);
+		ExtentTest test = this.getTestCases("TC_003_PlaceholderIsPresented");
+		try {
+			String placeHolderText = emailInput.getAttribute("placeholder");
+			boolean IsPlaceholderPresented = placeHolderText.contains("Email address or phone number");
+			Assert.assertEquals(IsPlaceholderPresented, true);
+			test.pass("Email address or phone number text is presented before typing");
+		} catch (Exception e) {
+			Helper.triggerExpectionError(test, e);
+		} catch (AssertionError e) {
+			Helper.triggerAssertionError(test, e);
+		}
 	}
 
 	@Test
 	public void TC_004_EmailInputIsEmailEnterable() {
-		emailInput.sendKeys("XYZ@gmail.com");
-		String emailTextValue = emailInput.getAttribute("value");
-		Assert.assertEquals(emailTextValue, "XYZ@gmail.com");
+		ExtentTest test = this.getTestCases("TC_004_EmailInputIsEmailEnterable");
+		try {
+			emailInput.sendKeys("XYZ@gmail.com");
+			String emailTextValue = emailInput.getAttribute("value");
+			Assert.assertEquals(emailTextValue, "XYZ@gmail.com");
+			test.pass("As a user I can enter my email  in the InputBox");
+		} catch (Exception e) {
+			Helper.triggerExpectionError(test, e);
+		} catch (AssertionError e) {
+			Helper.triggerAssertionError(test, e);
+		}
 
 	}
 
 	@Test
 	public void TC_005_EmailInputIsPhoneNumberEnterable() {
-		emailInput.clear();
-		emailInput.sendKeys("9814567891");
-		String phoneNumberValue = emailInput.getAttribute("value");
-		Assert.assertEquals(phoneNumberValue, "9814567891");
+		ExtentTest test = this.getTestCases("TC_005_EmailInputIsPhoneNumberEnterable");
+		try {
+			emailInput.clear();
+			emailInput.sendKeys("9814567891");
+			String phoneNumberValue = emailInput.getAttribute("value");
+			Assert.assertEquals(phoneNumberValue, "9814567891");
+			test.pass("As a user I can enter my Phone Number in the InputBox");
+		} catch (Exception e) {
+			Helper.triggerExpectionError(test, e);
+		} catch (AssertionError e) {
+			Helper.triggerAssertionError(test, e);
+		}
 	}
 
 	@Test
 	public void TC_006_PasswaordInputBoxIsEnable() {
-		passwordInput = driver.findElement(By.id("pass"));
-		boolean passwordInputIsEnabled = passwordInput.isEnabled();
-		Assert.assertEquals(passwordInputIsEnabled, true);
+		ExtentTest test = this.getTestCases("TC_006_PasswaordInputBoxIsEnable");
+		try {
+			passwordInput = driver.findElement(By.id("pass"));
+			boolean passwordInputIsEnabled = passwordInput.isEnabled();
+			Assert.assertEquals(passwordInputIsEnabled, true);
+			test.pass("As a user I can enter my password in the InputBox");
+		} catch (Exception e) {
+			Helper.triggerExpectionError(test, e);
+		} catch (AssertionError e) {
+			Helper.triggerAssertionError(test, e);
+		}
 
 	}
 
 	@Test
 	public void TC_007_PlaceholderIsPresentedInPassword() {
-		String placeHolderTextPass = passwordInput.getAttribute("placeholder");
-		boolean IsPlaceholderPresentedPass = placeHolderTextPass.contains("Password");
-		Assert.assertEquals(IsPlaceholderPresentedPass, true);
+		ExtentTest test = this.getTestCases("TC_007_PlaceholderIsPresentedInPassword");
+		try {
+			String placeHolderTextPass = passwordInput.getAttribute("placeholder");
+			boolean IsPlaceholderPresentedPass = placeHolderTextPass.contains("Password");
+			Assert.assertEquals(IsPlaceholderPresentedPass, true);
+			test.pass("Password text is presented before typing");
+		} catch (Exception e) {
+			Helper.triggerExpectionError(test, e);
+		} catch (AssertionError e) {
+			Helper.triggerAssertionError(test, e);
+		}
 	}
 
 	@Test
 	public void TC_008_PasswordInputIsEnterable() {
-		passwordInput.sendKeys("paSSwoRd123");
-		String passwordTextValue = passwordInput.getAttribute("value");
-		Assert.assertEquals(passwordTextValue, "paSSwoRd123");
+		ExtentTest test = this.getTestCases("TC_008_PasswordInputIsEnterable");
+		try {
+			passwordInput.sendKeys("paSSwoRd123");
+			String passwordTextValue = passwordInput.getAttribute("value");
+			Assert.assertEquals(passwordTextValue, "paSSwoRd123");
+			test.pass("As a user I can enter my password InputBox");
+		} catch (Exception e) {
+			Helper.triggerExpectionError(test, e);
+		} catch (AssertionError e) {
+			Helper.triggerAssertionError(test, e);
+		}
 
 	}
 
 	@Test
 	public void TC_009_EyeIconIsDisplayed() {
-		eyeIconContainer = driver.findElement(By.xpath("//div[@id='passContainer']/div"));
-		boolean isHidden = eyeIconContainer.getAttribute("class").contains("hidden_elem");
-		Assert.assertEquals(isHidden, false);
+		ExtentTest test = this.getTestCases("TC_009_EyeIconIsDisplayed");
+		try {
+			eyeIconContainer = driver.findElement(By.xpath("//div[@id='passContainer']/div"));
+			boolean isHidden = eyeIconContainer.getAttribute("class").contains("hidden_elem");
+			Assert.assertEquals(isHidden, false);
+			test.pass("Eye Icon is displayed after enter password");
+		} catch (Exception e) {
+			Helper.triggerExpectionError(test, e);
+		} catch (AssertionError e) {
+			Helper.triggerAssertionError(test, e);
+		}
 	}
 
 	@Test
 	public void TC_010_EyeIconIsNotDisplayed() throws InterruptedException {
-		passwordInput.clear();
-		passwordInput.sendKeys(Keys.BACK_SPACE);
-		Thread.sleep(1000);
-		boolean isnotHidden = eyeIconContainer.getAttribute("class").contains("hidden_elem");
-		Assert.assertEquals(isnotHidden, true);
+		ExtentTest test = this.getTestCases("TC_010_EyeIconIsNotDisplayed");
+		try {
+			passwordInput.clear();
+			passwordInput.sendKeys(Keys.BACK_SPACE);
+			Thread.sleep(1000);
+			boolean isnotHidden = eyeIconContainer.getAttribute("class").contains("hidden_elem");
+			Assert.assertEquals(isnotHidden, true);
+			test.pass("Eye Icon is not displayed after cleared password");
+		} catch (Exception e) {
+			Helper.triggerExpectionError(test, e);
+		} catch (AssertionError e) {
+			Helper.triggerAssertionError(test, e);
+		}
 	}
 
 	@Test
 	public void TC_011_PasswordDisplayedByClickEyeIcon() {
-		passwordInput.sendKeys("paSSwoRd123");
-		 eyeIcon = driver.findElement(By.xpath("//div[@class='_9lsa']"));
-		eyeIcon.click();
-		boolean IsDisplayedAsText = passwordInput.getAttribute("type").contains("text");
-		Assert.assertEquals(IsDisplayedAsText, true);
-
+		ExtentTest test = this.getTestCases("TC_011_PasswordDisplayedByClickEyeIcon");
+		try {
+			passwordInput.sendKeys("paSSwoRd123");
+			eyeIcon = driver.findElement(By.xpath("//div[@class='_9lsa']"));
+			eyeIcon.click();
+			boolean IsDisplayedAsText = passwordInput.getAttribute("type").contains("text");
+			Assert.assertEquals(IsDisplayedAsText, true);
+			test.pass("Password is displayed as text that entered in the Password InputBox");
+		} catch (Exception e) {
+			Helper.triggerExpectionError(test, e);
+		} catch (AssertionError e) {
+			Helper.triggerAssertionError(test, e);
+		}
 	}
 
 	@Test
 	public void TC_012_PasswordNotDisplayedByClickEyeIcon() {
-		eyeIcon.click();
-		boolean IsDisplayedAsPass = passwordInput.getAttribute("type").contains("password");
-		Assert.assertEquals(IsDisplayedAsPass, true);
+		ExtentTest test = this.getTestCases("TC_012_PasswordNotDisplayedByClickEyeIcon");
+		try {
+			eyeIcon.click();
+			boolean IsDisplayedAsPass = passwordInput.getAttribute("type").contains("password");
+			Assert.assertEquals(IsDisplayedAsPass, true);
+			test.pass("Password is not displayed as text that entered in the Password InputBox");
+		} catch (Exception e) {
+			Helper.triggerExpectionError(test, e);
+		} catch (AssertionError e) {
+			Helper.triggerAssertionError(test, e);
+		}
+
+	}
+
+
+
+//	@Test
+//	public void TC_014_() {
+//		driver.findElement(By.xpath("//div[@class='rfloat _ohf']/a")).click();
+//	}
+
+	@Test
+	public void TC_013_CreateAccountIsEnabel() {
+		ExtentTest test = this.getTestCases("TC_013_CreateAccountIsEnabel");
+		try {
+			createAccountButton = driver.findElement(By.cssSelector("[data-testid='open-registration-form-button']"));
+			boolean isSignUpButtonEnabble = createAccountButton.isEnabled();
+			Assert.assertEquals(isSignUpButtonEnabble, true);
+			test.pass("As a user Create Account button is enable");
+		} catch (Exception e) {
+			Helper.triggerExpectionError(test, e);
+
+		} catch (AssertionError e) {
+			Helper.triggerAssertionError(test, e);
+
+		}
 
 	}
 
 	@Test
-	public void TC_013_ForgetPasswordIsRedirectable() throws InterruptedException {
-		driver.findElement(By.xpath("//div[@class='_6ltj']/a")).click();
-		Thread.sleep(3000);
-		String findText = driver.findElement(By.xpath("//h2[@class='uiHeaderTitle']")).getText();
-		Assert.assertEquals(findText.contains("Find Your Account"), true);
+	public void TC_014_SignUpModelIsDisplay() {
+		ExtentTest test = this.getTestCases("TC_014_SignUpModelIsDisplay");
+		try {
+			createAccountButton.click();
+			String signUpHedText = driver.findElement(By.xpath("//div[@class='mbs _52lq fsl fwb fcb']")).getText();
+			Assert.assertEquals(signUpHedText.contains("Sign Up"), true);
+			test.pass("SignUp Model is displayed to create a new FB account");
+		} catch (Exception e) {
+			Helper.triggerExpectionError(test, e);
+
+		} catch (AssertionError e) {
+			Helper.triggerAssertionError(test, e);
+
+		}
 
 	}
 	
+	@Test
+	public void TC_015_ForgetPasswordIsRedirectable() throws InterruptedException {
+		ExtentTest test = this.getTestCases("TC_015_ForgetPasswordIsRedirectable");
+		try {
+			driver.findElement(By.xpath("//div[@class='_8ien']/img")).click();
+			driver.findElement(By.xpath("//div[@class='_6ltj']/a")).click();
+			Thread.sleep(3000);
+			String findText = driver.findElement(By.xpath("//h2[@class='uiHeaderTitle']")).getText();
+			Assert.assertEquals(findText.contains("Find Your Account"), true);
+			Thread.sleep(3000);
+			driver.navigate().back();
+			test.pass("Forget password link redirects to find you account page");
+		} catch (Exception e) {
+			Helper.triggerExpectionError(test, e);
+		} catch (AssertionError e) {
+			Helper.triggerAssertionError(test, e);
+		}
+
+	}
+	
+	@Test
+	public void TC_016_CreatePageIsRedirectable() {
+		ExtentTest test = this.getTestCases("TC_16_CreatePageIsRedirectable");
+		try {
+			WebElement pageCreation = driver.findElement(By.xpath("//div[@id='reg_pages_msg']/a"));
+			pageCreation.click();
+			String pageHedText = driver.findElement(By.cssSelector("[data-testid='pageCreationHeaderBannerTitle']")).getText();
+			Assert.assertEquals(pageHedText.contains("Create a Page"), true);
+		} catch (Exception e) {
+			Helper.triggerExpectionError(test, e);
+		} catch (AssertionError e) {
+			Helper.triggerAssertionError(test, e);
+		}		
+		
+		
+	}
 
 	@AfterSuite
 	public void closure() {
 //		driver.close();
+//		report.flush();
 	}
 
 }
