@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -237,8 +238,6 @@ public class loginPage {
 
 	}
 
-
-
 //	@Test
 //	public void TC_014_() {
 //		driver.findElement(By.xpath("//div[@class='rfloat _ohf']/a")).click();
@@ -279,7 +278,7 @@ public class loginPage {
 		}
 
 	}
-	
+
 	@Test
 	public void TC_015_ForgetPasswordIsRedirectable() throws InterruptedException {
 		ExtentTest test = this.getTestCases("TC_015_ForgetPasswordIsRedirectable");
@@ -299,28 +298,41 @@ public class loginPage {
 		}
 
 	}
-	
+
 	@Test
 	public void TC_016_CreatePageIsRedirectable() {
 		ExtentTest test = this.getTestCases("TC_16_CreatePageIsRedirectable");
 		try {
 			WebElement pageCreation = driver.findElement(By.xpath("//div[@id='reg_pages_msg']/a"));
 			pageCreation.click();
-			String pageHedText = driver.findElement(By.cssSelector("[data-testid='pageCreationHeaderBannerTitle']")).getText();
+			String pageHedText = driver.findElement(By.cssSelector("[data-testid='pageCreationHeaderBannerTitle']"))
+					.getText();
 			Assert.assertEquals(pageHedText.contains("Create a Page"), true);
 		} catch (Exception e) {
 			Helper.triggerExpectionError(test, e);
 		} catch (AssertionError e) {
 			Helper.triggerAssertionError(test, e);
-		}		
-		
-		
+		}
+
+	}
+
+	@Test
+	@Parameters({"email", "password"})
+	public void TC_017_LoginSucessfully(String email, String password) {
+		driver.navigate().back();
+		emailInput = driver.findElement(By.id("email"));
+		emailInput.clear();
+		emailInput.sendKeys("email");
+		passwordInput = driver.findElement(By.id("pass"));
+		passwordInput.sendKeys("password");
+		driver.findElement(By.cssSelector("[data-testid='royal_login_button']")).click();
+
 	}
 
 	@AfterSuite
 	public void closure() {
-//		driver.close();
-//		report.flush();
+		driver.close();
+		report.flush();
 	}
 
 }

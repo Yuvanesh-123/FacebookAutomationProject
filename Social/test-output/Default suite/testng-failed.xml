@@ -5,8 +5,7 @@
     <classes>
       <class name="facebook.loginPage">
         <methods>
-          <include name="TC_011_PasswordDisplayedByClickEyeIcon"/>
-          <include name="TC_012_PasswordNotDisplayedByClickEyeIcon"/>
+          <include name="TC_017_LoginSucessfully"/>
           <include name="setUP"/>
           <include name="closure"/>
         </methods>
